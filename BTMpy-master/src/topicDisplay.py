@@ -30,24 +30,24 @@ def dispTopics(pt, voca, pz):
         topics.append((pz[k], tmps))
         k += 1
         
-    print 'p(z)\t\tTop words'
+    print('p(z)\t\tTop words')
     for pz, s in sorted(topics, reverse=True):
-        print '%f\t%s' % (pz, s)
+        print('%f\t%s' % (pz, s))
 
-if __name__ == '__main__':
-    if len(sys.argv) < 4:
-        print 'Usage: python %s <model_dir> <K> <voca_pt>' % sys.argv[0]
-        print '\tmodel_dir    the output dir of BTM'
-        print '\tK    the number of topics'
-        print '\tvoca_pt    the vocabulary file'
+def run_topicDicplay(argv):
+    if len(argv) < 4:
+        print('Usage: python %s <model_dir> <K> <voca_pt>' % argv[0])
+        print('\tmodel_dir    the output dir of BTM')
+        print('\tK    the number of topics')
+        print('\tvoca_pt    the vocabulary file')
         exit(1)
         
-    model_dir = sys.argv[1]
-    K = int(sys.argv[2])
-    voca_pt = sys.argv[3]
+    model_dir = argv[1]
+    K = int(argv[2])
+    voca_pt = argv[3]
     voca = read_voca(voca_pt)    
     W = len(voca)
-    print 'K:%d, n(W):%d' % (K, W)
+    print('K:%d, n(W):%d' % (K, W))
 
     pz_pt = model_dir + 'k%d.pz' % K
     pz = read_pz(pz_pt)
